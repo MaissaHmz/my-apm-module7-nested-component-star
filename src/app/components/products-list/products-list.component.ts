@@ -22,7 +22,10 @@ export class ProductsListComponent implements OnInit {
 
   ngOnInit() {
 
-   this.products = this._service.getAllProducts();
+   this._service.getAllProducts().subscribe(
+      result => this.products = result,
+      erreur => console.log('ATTENTION, Il y a eu l\'erreur : ' + erreur)
+     );
 
   }
   toggleImage(): void {
